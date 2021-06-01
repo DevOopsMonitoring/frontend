@@ -20,10 +20,41 @@ const actions = {
     await dispatch('LogIn', UserForm)
   },
 
-  async LogIn({commit}, user) {
-    await axios.post("login", user);
-    await commit("setUser", user.get("username"));
+  LogIn({commit}, user) {
+    axios({
+      method: 'post',
+      url: '/auth/login',
+      withCredentials: false,
+      data: {
+        username: user.username,
+        password: user.password
+      }
+    })
+    .then(response => {
+      localStorage.setItem('ACCESS_TOKEN', response.data.access_token);
+      localStorage.setItem('REFRESH_TOKEN', response.data.refresh_token);
+      // eslint-disable-next-line no-constant-condition
+      if (false) commit("setUser", 'some')
+
+
+    })
   },
+
+  // refreshTokens (context, credentials) {
+    
+  //   dispatch('autoRefresh', credentials)
+  // },
+
+  // autoRefresh (context, credentials) {
+  //   const { state, commit, dispatch } = context
+  //   const { accessToken } = state
+  //   const { exp } = jwt_decode(accessToken)
+  //   const now = Date.now() / 1000 // exp is represented in seconds since epoch
+  //   let timeUntilRefresh = exp - now
+  //   timeUntilRefresh -= (15 * 60) // Refresh 15 minutes before it expires
+  //   const refreshTask = setTimeout(() => dispatch('refreshTokens', credentials), timeUntilRefresh * 1000)
+  //   commit('refreshTask', refreshTask) // In case you want to cancel this task on logout
+  // },
 
   async CreatePost({ dispatch }, post) {
     await axios.post("post", post);

@@ -3,16 +3,16 @@
     <div>
       <form @submit.prevent="submit">
         <div>
-          <label for="username">Username:</label>
-          <input type="text" name="username" v-model="form.username" />
+          <input placeholder="Логин" type="text" name="username" v-model="form.username" />
         </div>
         <div>
-          <label for="full_name">Full Name:</label>
-          <input type="text" name="full_name" v-model="form.full_name" />
+          <input placeholder="Email" type="text" name="full_name" v-model="form.full_name" />
         </div>
         <div>
-          <label for="password">Password:</label>
-          <input type="password" name="password" v-model="form.password" />
+          <input placeholder="Пароль" type="password" name="password" v-model="form.password" />
+        </div>
+        <div>
+          <input placeholder="Повторите пароль" type="password" name="repeat_password" v-model="form.password" />
         </div>
         <button type="submit">Submit</button>
       </form>

@@ -1,7 +1,7 @@
 <template>
   <div id="nav" align="left">
     <router-link to="/">Главная</router-link> |
-    <router-link to="/posts">Показатели</router-link> |
+    <router-link to="/charts">Показатели</router-link> |
     <span v-if="isLoggedIn">
       <a @click="logout">Выйти</a>
     </span>

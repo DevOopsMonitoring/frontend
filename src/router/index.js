@@ -4,7 +4,7 @@ import store from "../store";
 import Home from "../views/Home.vue";
 import Register from "../views/Register";
 import Login from "../views/Login";
-import Posts from "../views/Posts";
+import Charts from "../views/Charts";
 
 Vue.use(VueRouter);
 
@@ -27,9 +27,9 @@ const routes = [
     meta: { guest: true },
   },
   {
-    path: "/posts",
-    name: "Posts",
-    component: Posts,
+    path: "/charts",
+    name: "Charts",
+    component: Charts,
     meta: { requiresAuth: true },
   },
 ];
