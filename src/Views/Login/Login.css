@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+  }
+
+  h1 {
+    color: #23a6d5;
+    text-align: center;
+    margin: 0 0 20px 0;
+  }
+
+  .login {
+    padding: 60px 35px 35px 35px;
+    margin: 60px auto 0px auto;
+    border-radius: 40px;
+    background: #ecf0f3;
+  }
+  button[type="button"] {
+    background-color: #23a6d5;
+    color: white;
+    margin-top: 20px;
+    padding: 12px 50px;
+    cursor: pointer;
+    border-radius: 30px;
+    border-width: 0px;
+    outline: none;
+  }
+  button[type="button"]:hover {
+    background-color: #006ab3;
+    transition: 0.5s;
+  }
+  input {
+    border-width: 0px;
+    font-size: 15px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 50px #c0c5ca,
+                -0px -0px 50px #ffffff;
+  }
+  input:focus{
+    outline: none;
+  }
+  #error {
+    color: red;
+  }
+  @media screen and (min-width: 601px) {
+      div.login {
+        width: 700px
+      }
+      input {
+        line-height: 20px;
+        width: 500px;
+      }
+    }
+  /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+    @media screen and (max-width: 600px) {
+      div.login {
+        width: 330px;
+      }
+      input {
+        line-height: 20px;
+        width: 230px;
+      }
+    }
