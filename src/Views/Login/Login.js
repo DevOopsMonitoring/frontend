@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import React from 'react';
+import jwt_decode from "jwt-decode";
 import './Login.css'
 
 
@@ -20,6 +21,8 @@ export default function Login(){
             }
           })
           .then(response => {
+            var decoded = jwt_decode(response.data.access_token)
+            localStorage.setItem('user_id', decoded.sub)
             localStorage.setItem('access_token', response.data.access_token);
             localStorage.setItem('refresh_token', response.data.refresh_token);
             history.push('/')

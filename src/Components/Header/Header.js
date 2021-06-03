@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import './Header.css'
 
 const Header = () => {
+    const history = useHistory();
     return(
         <div id="nav">
             <Link to="/">Главная</Link> |
@@ -13,6 +14,7 @@ const Header = () => {
             <span onClick={() => {
                 localStorage.removeItem('access_token');
                 localStorage.removeItem('refresh_token')
+                history.push('/')
                 window.location.reload()
             }}>
                 <a>Выйти</a>

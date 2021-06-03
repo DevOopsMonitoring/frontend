@@ -9,6 +9,7 @@ import Home from './Views/Home/Home'
 import Register from './Views/Register/Register'
 import Login from './Views/Login/Login'
 import Charts from './Views/Charts/Charts'
+import UserServers from './Views/UserServers/UserServers'
 import './App.css';
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
       <Header />
       <Switch>
         <Route path='/charts'>
-          <Charts />
+          <UserServers />
         </Route>
         <Route path='/login'>
           <Login />
