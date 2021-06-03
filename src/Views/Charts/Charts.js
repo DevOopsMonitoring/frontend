@@ -129,11 +129,6 @@ export default function Charts(){
             })
     }
 
-    const setCharts = () => {
-        console.log(chartData)
-        
-    }
-
     return(
         <div style={{width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-around', flexWrap: 'wrap'}}>
             {chartData.map(item => {

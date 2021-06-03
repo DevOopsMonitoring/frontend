@@ -1,5 +1,6 @@
 import React from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 import './Register.css'
 
 export default function Register(){
@@ -7,6 +8,7 @@ export default function Register(){
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
     const [repeat_password, setRepeatPassword] = React.useState('')
+    const history = useHistory();
 
     const Register = () => {
         if (password === repeat_password)
@@ -21,7 +23,7 @@ export default function Register(){
                 }
             })
             .then(() => {
-                
+                history.push('/login')
             })
             .catch(err => {
                 throw err;
@@ -45,7 +47,7 @@ export default function Register(){
                     <div>
                         <input onChange={e => setRepeatPassword(e.target.value)} placeholder="Повторите пароль" type="password" name="repeat_password" />
                     </div>
-                    <button onClick={() => Register()} type="button">Submit</button>
+                    <button onClick={() => Register()} type="button">Зарегистрироваться</button>
                 </form>
             </div>
         </div>
