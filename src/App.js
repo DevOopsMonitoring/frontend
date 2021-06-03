@@ -9,6 +9,8 @@ import Home from './Views/Home/Home'
 import Register from './Views/Register/Register'
 import Login from './Views/Login/Login'
 import UserServers from './Views/UserServers/UserServers'
+import Sensors from "./Views/Sensors/Sensors";
+import UserRules from "./Views/UserRules/UserRules";
 import './App.css';
 
 function App() {
@@ -18,6 +20,12 @@ function App() {
       <Switch>
         <Route path='/charts'>
           <UserServers />
+        </Route>
+        <Route path='/sensors'>
+          <Sensors />
+        </Route>
+        <Route path='/my_rules'>
+          <UserRules/>
         </Route>
         <Route path='/login'>
           <Login />

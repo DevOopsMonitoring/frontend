@@ -30,7 +30,7 @@
     border-color: #e73c7e;
     border: 2px solid;
     text-align: center;
-    padding: 8px;
+    padding: 8px
 }
 
 .data-button:hover {
@@ -39,9 +39,8 @@
     transition: 0.5s;
 }
 
-.data-button .return {
+.data-button return {
     width: 150px;
-    margin: 1000px;
 }
 
 .add-element {
