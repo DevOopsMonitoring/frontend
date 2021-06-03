@@ -1,11 +1,14 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import axios from 'axios';
+import Charts from '../Charts/Charts'
 import './UserServers.css'
 
 
 export default function UserServers(){
     const [servers, setServers] = React.useState([]);
     const [loaded, setLoaded] = React.useState(false)
+    const [serverId, setServerId] = React.useState(null)
 
     React.useEffect(() => {
         axios({
@@ -26,15 +29,30 @@ export default function UserServers(){
     }, [])
 
     return(
-        <div>
-            {loaded ? 
+        <div className='servers-container'>
+            {loaded && (serverId === null) ? 
             <>
                 {servers.map(item => {
                     return(
-                        <p>{item.name}</p>
+                        <div className='list-element' key={item.id}>
+                            <p className='elem-name'>{item.name}</p>
+                            <a className='data-link' onClick={() => setServerId(item.id)}>
+                                <div className='data-button'>
+                                    <a className='data-name'>Данные</a>
+                                </div>
+                            </a>
+                        </div>
                     )
                 })}
             </> : null}
+            {serverId !== null ? 
+            <>
+            <a className={["data-link",  "return"]} onClick={() => setServerId(null)}>
+                <div className='data-button'>
+                    <a className='data-name'>Вернуться к списку серверов</a>
+                </div>
+            </a>
+            <Charts id={serverId}/> </>: null}
         </div>
     )
 }

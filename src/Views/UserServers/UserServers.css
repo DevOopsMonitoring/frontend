@@ -1,0 +1,44 @@
+.servers-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.list-element {
+    height: 150px;
+    width: 150px;
+    border-radius: 15px;
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.elem-name {
+    height: 80px;
+    margin: 0px;
+}
+
+.data-button {
+    /* width: 100px; */
+    border-radius: 30px;
+    background-color: white;
+    color: #e73c7e;
+    border-color: #e73c7e;
+    border: 2px solid;
+    text-align: center;
+    padding: 8px
+}
+
+.data-button:hover {
+    background-color: #e73c7e;
+    color: white;
+    transition: 0.5s;
+}
+
+.data-button return {
+    width: 150px;
+}

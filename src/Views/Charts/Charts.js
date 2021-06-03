@@ -54,7 +54,7 @@ Chart.register(
     Tooltip
   );
 
-export default function Charts(){
+export default function Charts({id}){
     const [chartData, setChartData] = React.useState([])
 
     React.useEffect(() => {
@@ -67,13 +67,14 @@ export default function Charts(){
     const getChartData = () => {
         axios({
             method: 'get',
-            url: '/api/v1/data/3',
+            url: `/api/v1/data/${id}`,
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
             }
         })
         .then(response => {
             setChartData(response.data.data)
+            console.log(response.data.data)
             response.data.data.map(item => {
                 var ctx = document.getElementById(item.name);
                 console.log(ctx, item.time, item.values)

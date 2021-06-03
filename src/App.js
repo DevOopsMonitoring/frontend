@@ -8,7 +8,6 @@ import Header from './Components/Header/Header'
 import Home from './Views/Home/Home'
 import Register from './Views/Register/Register'
 import Login from './Views/Login/Login'
-import Charts from './Views/Charts/Charts'
 import UserServers from './Views/UserServers/UserServers'
 import './App.css';
 

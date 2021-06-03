@@ -10,10 +10,11 @@ const Header = () => {
             
             {localStorage.getItem('refresh_token') !== null ?
             <>
-            <Link to="/charts">Показатели</Link> |
+            <Link to="/charts">Мои сервера</Link> |
             <span onClick={() => {
                 localStorage.removeItem('access_token');
-                localStorage.removeItem('refresh_token')
+                localStorage.removeItem('refresh_token');
+                localStorage.removeItem('user_id')
                 history.push('/')
                 window.location.reload()
             }}>
