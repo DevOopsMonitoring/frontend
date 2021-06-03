@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import axios from 'axios';
-import Charts from '../Charts/Charts'
+import Charts from '../../Components/Charts/Charts'
+import Modal from '../../Components/Modal/Modal'
 import './UserServers.css'
 
 
@@ -9,6 +10,7 @@ export default function UserServers(){
     const [servers, setServers] = React.useState([]);
     const [loaded, setLoaded] = React.useState(false)
     const [serverId, setServerId] = React.useState(null)
+    const [showModal, setShowModal] = React.useState(false)
 
     React.useEffect(() => {
         axios({
@@ -44,6 +46,11 @@ export default function UserServers(){
                         </div>
                     )
                 })}
+                <a onClick={() => setShowModal(!showModal)}>
+                    <div className='add-element'>
+                        <p className='add-name'>+</p>
+                    </div>
+                </a>
             </> : null}
             {serverId !== null ? 
             <>
@@ -53,6 +60,7 @@ export default function UserServers(){
                 </div>
             </a>
             <Charts id={serverId}/> </>: null}
+            <Modal show={showModal} closeModal={() => setShowModal(false)}/>
         </div>
     )
 }

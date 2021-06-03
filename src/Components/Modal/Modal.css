@@ -1,0 +1,16 @@
+.modal-container {
+    position: absolute;
+    box-shadow: 3px 3px 10px pink, -3px -3px 10px pink;
+    width: 600px;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: white;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+/* @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+} */
