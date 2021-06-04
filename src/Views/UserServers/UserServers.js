@@ -4,6 +4,7 @@ import axios from 'axios';
 import Charts from '../../Components/Charts/Charts'
 import AddServer from '../../Components/Modals/AddServer'
 import './UserServers.css'
+import { CircularProgress } from '@material-ui/core';
 
 
 export default function UserServers(){
@@ -131,7 +132,10 @@ export default function UserServers(){
                         <a className={["data-link", "return"]} onClick={() => editServer()} style={{marginRight: 10}}>
                             <div className='data-button'>Редактировать</div>
                         </a>
-                        <Charts id={serverId}/>
+                        <div id='text_load' style={{position: "absolute", left: "50%", top: "50%"}}>
+                            <CircularProgress />
+                        </div>
+                        <Charts styple={{position: "absolute"}} id={serverId}/>
                     </> : null
             }
             <AddServer

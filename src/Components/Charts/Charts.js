@@ -54,6 +54,8 @@ Chart.register(
     Tooltip
   );
 
+
+
 export default function Charts({id}){
     const [chartData, setChartData] = React.useState([])
 
@@ -104,6 +106,9 @@ export default function Charts({id}){
                                 }
                             }
                         }
+                    },
+                    onAnimationComplete: new function () {
+                        document.getElementById("text_load").style.visibility = "hidden"
                     }
                 });
             })

@@ -3,7 +3,7 @@ import axios from 'axios';
 import './Modal.css';
 
 
-const AddRule = ({show, closeModal, Titel, rules, ruleId, sensorId, serverId}) => {
+const AddRule = ({show, closeModal, Titel, rule, sensorId, serverId}) => {
     const addRule = () => {
         var critical_value = document.getElementById("critical_value").value;
 
@@ -41,7 +41,6 @@ const AddRule = ({show, closeModal, Titel, rules, ruleId, sensorId, serverId}) =
     }
 
     if (Titel === 'Редактировать') {
-        var rule = rules.filter(item => item.id === ruleId)[0]
         document.getElementById("critical_value").value = rule.critical_value
     } else if (Titel === 'Добавить') {
         document.getElementById("critical_value").value = ""
@@ -49,6 +48,13 @@ const AddRule = ({show, closeModal, Titel, rules, ruleId, sensorId, serverId}) =
 
     return (
         <div className={'modal-container'} style={{visibility: show ? 'visible' : 'hidden'}}>
+            <div style={
+                {position: "absolute", right: "20px", top: "10px", fontSize: "xx-large", color: "red",
+                    visibility: Titel === "Редактировать" && show ? 'visible' : 'hidden'}}
+                 onClick={() => deleteRule()}
+            >
+                🗑
+            </div>
             <div style={
                 {position: "absolute", right: "20px", top: "10px", fontSize: "xx-large", color: "red",
                 visibility: Titel === "Редактировать" && show ? 'visible' : 'hidden'}}

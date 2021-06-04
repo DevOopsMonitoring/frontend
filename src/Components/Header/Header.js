@@ -4,14 +4,20 @@ import './Header.css'
 
 const Header = () => {
     const history = useHistory();
+    const [pathname, setHistory] = React.useState(history.location.pathname)
+
+    let unlisten = history.listen(({ action, location }) => {
+        setHistory(history.location.pathname)
+    });
+
     return(
         <div id="nav">
-            <Link to="/">Главная</Link>
+            <Link to="/" style={{textDecoration: pathname === '/' ? 'underline' : 'none', textUnderlineOffset: 10}}>Главная</Link>
             {
                 localStorage.getItem('refresh_token') !== null ?
                     <>
-                        | <Link to="/charts">Мои сервера</Link> |
-                        <Link to="/my_rules">Правила сбора информации</Link>
+                        | <Link to="/charts" style={{textDecoration: pathname === '/charts' ? 'underline' : 'none', textUnderlineOffset: 10}}>Мои сервера</Link> |
+                        <Link to="/my_rules" style={{textDecoration: pathname === '/my_rules' ? 'underline' : 'none', textUnderlineOffset: 10}}>Правила сбора информации</Link>
                         <span style={{float: "right"}} onClick={() => {
                             localStorage.removeItem('access_token');
                             localStorage.removeItem('refresh_token');
@@ -31,7 +37,7 @@ const Header = () => {
             {
                 localStorage.getItem('user_id') === "1" ?
                     <>
-                        | <Link to="/sensors">Датчики</Link> |
+                        | <Link to="/sensors" style={{textDecoration: pathname === '/sensors' ? 'underline' : 'none', textUnderlineOffset: 10}}>Датчики</Link> |
                         <Link to="/sensors">Организации</Link> |
                         <Link to="/sensors">Отчеты</Link>
                     </> : null

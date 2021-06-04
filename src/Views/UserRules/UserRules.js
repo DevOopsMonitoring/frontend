@@ -13,6 +13,7 @@ export default function UserRules(){
     const [serverId, setServerId] = React.useState(null)
     const [sensorId, setSensorId] = React.useState(null)
     const [mySensors, setMySensors] = React.useState([])
+    const [rule, setRule] = React.useState(null)
     const [showModal, setShowModal] = React.useState(false)
     const [titleModal, setTitleModal] = React.useState(null)
 
@@ -111,7 +112,7 @@ export default function UserRules(){
                 all_sensors.push(sensors[i])
         }
         return(
-            <div>{
+            <div style={{display: "flex", flexDirection: "row"}}>{
                 my_sensors.map(item => {
                     return (
                         <div className='list-element' key={item.id}>
@@ -119,6 +120,7 @@ export default function UserRules(){
                             <a className='data-link' onClick={() => {
                                 setTitleModal('Редактировать')
                                 setSensorId(item.id)
+                                setRule(item)
                                 setShowModal(true)
                             }}>
                                 <div className='data-button'>
@@ -161,10 +163,9 @@ export default function UserRules(){
             }
             {
                 loaded && (serverId !== null) ?
-                <span style={{display: "flex", flexDirection: "column"}}>
+                <span>
                     <a className={["data-link",  "return"]} style={{marginRight: 10}} onClick={() => {
                         setServerId(null)
-                        setMySensors([])
                     }}>
                         <div className='data-button'>
                             <a className='data-name'>Вернуться к списку серверов</a>
@@ -173,7 +174,6 @@ export default function UserRules(){
                     <div style={{margin: 10}}>
                         {
                             showSensors()
-
                         }
                     </div>
                 </span>: null
@@ -182,11 +182,12 @@ export default function UserRules(){
                 show={showModal}
                 closeModal={() => {
                     setShowModal(false)
-                    getServers()
+                    showSensors()
                 }}
                 Titel={titleModal}
                 sensorId={sensorId}
                 serverId={serverId}
+                rule={rule}
             />
         </div>
     )
