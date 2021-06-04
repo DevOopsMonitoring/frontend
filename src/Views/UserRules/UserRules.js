@@ -2,7 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 import Charts from '../../Components/Charts/Charts'
-import AddServer from '../../Components/Modal/AddServer'
+import AddServer from '../../Components/Modals/AddServer'
 import './UserRules.css'
 
 

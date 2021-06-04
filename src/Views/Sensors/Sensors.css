@@ -20,6 +20,8 @@
 .elem-name {
     height: 80px;
     margin: 0px;
+    align-self: center;
+    font-size: x-large;
 }
 
 .data-button {
