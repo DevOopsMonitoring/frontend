@@ -44,9 +44,12 @@ const AddSensor = ({show, closeModal, Titel, sensors, sensorID}) => {
                 }
             })
             .then(Response => {
-                console.log(Response);
                 closeModal();
             })
+    }
+
+    const deleteSensor = () => {
+        alert('123')
     }
 
     const doSensor = () => {
@@ -61,10 +64,21 @@ const AddSensor = ({show, closeModal, Titel, sensors, sensorID}) => {
         document.getElementById("name").value = sensor.name
         document.getElementById("description").value = sensor.description
         document.getElementById("snmp").value = sensor.snmp
+    } else if (Titel === 'Добавить') {
+        document.getElementById("name").value = ""
+        document.getElementById("description").value = ""
+        document.getElementById("snmp").value = ""
     }
 
     return (
         <div className={'modal-container'} style={{visibility: show ? 'visible' : 'hidden'}}>
+            <div style={
+                {position: "absolute", right: "20px", top: "10px", fontSize: "xx-large", color: "red",
+                visibility: Titel === "Редактировать" && show ? 'visible' : 'hidden'}}
+                 onClick={() => deleteSensor()}
+            >
+                🗑
+            </div>
             <h2>{Titel} сенсор</h2>
             <input id="name" type="text" placeholder='Название сенсора'/>
             <input id="description" type="text" placeholder='Описание сенсора'/>

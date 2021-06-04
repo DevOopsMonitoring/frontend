@@ -67,7 +67,6 @@ const AddServer = ({show, closeModal, titleModal, serverId}) => {
                 }
             })
             .then(Response => {
-                console.log(Response);
                 closeModal();
             })
     }
@@ -100,6 +99,10 @@ const AddServer = ({show, closeModal, titleModal, serverId}) => {
                 document.getElementById("address").value = server.address
             }
         );
+    } else if (titleModal === 'Добавить') {
+        document.getElementById("name").value = ""
+        document.getElementById("description").value = ""
+        document.getElementById("address").value = ""
     }
 
     return (

@@ -82,6 +82,7 @@ export default function Charts({id}){
                         labels: item.time,
                         datasets: [{
                             data: item.values,
+                            tension: 0.3,
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.8)',
                             ],
@@ -132,7 +133,7 @@ export default function Charts({id}){
         <div style={{width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-around', flexWrap: 'wrap'}}>
             {chartData.map(item => {
                 return(
-                    <div style={{ width:400, height: 400, alignSelf: 'center', margin: 20}}>
+                    <div style={{ width:800, height: 400, alignSelf: 'center', margin: 20}}>
                         <canvas id={item.name} style={{backgroundColor: 'white', borderRadius: 15}}/>
                     </div>
                 )
