@@ -2,7 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 import Charts from '../../Components/Charts/Charts'
-import Modal from '../../Components/Modal/Modal'
+import AddServer from '../../Components/Modal/AddServer'
 import './UserRules.css'
 
 
@@ -62,7 +62,7 @@ export default function UserRules(){
                 <div className='data-button'>Сгенерировать файл</div>
             </a>
             <Charts id={serverId}/> </>: null}
-            <Modal show={showModal} closeModal={() => {
+            <AddServer show={showModal} closeModal={() => {
                 setShowModal(false)
                 getServers()
             }}/>

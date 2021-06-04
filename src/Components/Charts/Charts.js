@@ -74,10 +74,8 @@ export default function Charts({id}){
         })
         .then(response => {
             setChartData(response.data.data)
-            console.log(response.data.data)
             response.data.data.map(item => {
                 var ctx = document.getElementById(item.name);
-                console.log(ctx, item.time, item.values)
                 new Chart(ctx, {
                     type: 'line',
                     data: {
