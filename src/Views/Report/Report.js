@@ -47,7 +47,23 @@ export default function Report(){
             </div>
             <div className='list-element' key={1}>
                 <p className='elem-name'>Число серверов</p>
-                <a className='data-link' href="https://devoops.w0rng.ru/api/v1/reports/number_servers_in_companies/file">
+                <a className='data-link' href="https://devoops.w0rng.ru/api/v1/reports/number_servers_in_companies/print">
+                    <div className='data-button'>
+                        <a className='data-name'>Подробнее</a>
+                    </div>
+                </a>
+            </div>
+            <div className='list-element' key={1}>
+                <p className='elem-name'>Число датчиков</p>
+                <a className='data-link' href="https://devoops.w0rng.ru//api/v1/reports/count_sensors_on_server/print">
+                    <div className='data-button'>
+                        <a className='data-name'>Подробнее</a>
+                    </div>
+                </a>
+            </div>
+            <div className='list-element' key={1}>
+                <p className='elem-name'>Число ошибок</p>
+                <a className='data-link' href="https://devoops.w0rng.ru/api/v1/reports/count_fail_on_server/print">
                     <div className='data-button'>
                         <a className='data-name'>Подробнее</a>
                     </div>
