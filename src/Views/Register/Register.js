@@ -11,6 +11,16 @@ export default function Register(){
     const history = useHistory();
 
     const Register = () => {
+        const search = window.location.search;
+        const params = new URLSearchParams(search);
+        const token = params.get('q');
+
+        if (token === null){
+            alert('У вас нет пригласительной ссылки')
+            return
+        }
+
+        console.log(token)
         if (password === repeat_password)
             axios({
                 method: 'post',
@@ -19,7 +29,8 @@ export default function Register(){
                 data: {
                     username: login,
                     email: email,
-                    password: password
+                    password: password,
+                    company_token: token
                 }
             })
             .then(() => {

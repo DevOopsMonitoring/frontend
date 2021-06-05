@@ -11,6 +11,7 @@ export default function UserRules(){
     const [sensors, setSensors] = React.useState([]);
     const [loaded, setLoaded] = React.useState(false)
     const [serverId, setServerId] = React.useState(null)
+    const [serverToken, setServerToken] = React.useState(null)
     const [sensorId, setSensorId] = React.useState(null)
     const [mySensors, setMySensors] = React.useState([])
     const [rule, setRule] = React.useState(null)
@@ -81,6 +82,7 @@ export default function UserRules(){
                 <div className='list-element' key={item.id}>
                     <p className='elem-name'>{item.name}</p>
                     <a className='data-link' onClick={() => {
+                        setServerToken(item.token)
                         getMySensors(item.token)
                         setServerId(item.id)
                     }}>
@@ -115,7 +117,7 @@ export default function UserRules(){
             <div style={{display: "flex", flexDirection: "row"}}>{
                 my_sensors.map(item => {
                     return (
-                        <div className='list-element' key={item.id}>
+                        <div className='list-element' key={item.rule_id}>
                             <p className='elem-name'>{item.name}</p>
                             <a className='data-link' onClick={() => {
                                 setTitleModal('Редактировать')
@@ -165,7 +167,8 @@ export default function UserRules(){
                 loaded && (serverId !== null) ?
                 <span>
                     <a className={["data-link",  "return"]} style={{marginRight: 10}} onClick={() => {
-                        setServerId(null)
+                        setServerId(null);
+                        setServerToken(null);
                     }}>
                         <div className='data-button'>
                             <a className='data-name'>Вернуться к списку серверов</a>
@@ -182,6 +185,8 @@ export default function UserRules(){
                 show={showModal}
                 closeModal={() => {
                     setShowModal(false)
+                    getSensors()
+                    getMySensors(serverToken)
                     showSensors()
                 }}
                 Titel={titleModal}

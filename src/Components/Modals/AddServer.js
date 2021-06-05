@@ -20,7 +20,6 @@ const AddServer = ({show, closeModal, titleModal, serverId}) => {
             })
             .then(
                 () => {
-                    alert("Сервер успешно создан");
                     closeModal()
                 }
             )

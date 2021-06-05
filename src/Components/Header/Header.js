@@ -27,19 +27,19 @@ const Header = () => {
                         }}>
                             | <a>Выйти</a>
                         </span>
-                        <Link to="/sensors" style={{float: "right"}}>Личный кабинет</Link>
+                        <Link to="/sensors" style={{float: "right"}}>{localStorage.getItem('login')}</Link>
                     </> :
                     <span style={{float: "right"}}>
-                        <Link to="/login">Войти</Link> |
-                        <Link to="/register">Зарегистрироваться</Link>
+                        <Link to="/login" style={{textDecoration: pathname === '/login' ? 'underline' : 'none', textUnderlineOffset: 10}}>Войти</Link> |
+                        <Link to="/register" style={{textDecoration: pathname === '/register' ? 'underline' : 'none', textUnderlineOffset: 10}}>Зарегистрироваться</Link>
                     </span>
             }
             {
                 localStorage.getItem('user_id') === "1" ?
                     <>
                         | <Link to="/sensors" style={{textDecoration: pathname === '/sensors' ? 'underline' : 'none', textUnderlineOffset: 10}}>Датчики</Link> |
-                        <Link to="/sensors">Организации</Link> |
-                        <Link to="/sensors">Отчеты</Link>
+                        <Link to="/companies" style={{textDecoration: pathname === '/companies' ? 'underline' : 'none', textUnderlineOffset: 10}}>Организации</Link> |
+                        <Link to="/report" style={{textDecoration: pathname === '/report' ? 'underline' : 'none', textUnderlineOffset: 10}}>Отчеты</Link>
                     </> : null
             }
         </div>

@@ -23,7 +23,6 @@ const AddSensor = ({show, closeModal, Titel, sensors, sensorID}) => {
                 }
             })
             .then(() => {
-                alert("Сенсор успешно создан");
                 closeModal()
             })
     }
@@ -49,7 +48,18 @@ const AddSensor = ({show, closeModal, Titel, sensors, sensorID}) => {
     }
 
     const deleteSensor = () => {
-        alert('123')
+        axios
+            .request({
+                method: 'delete',
+                url: `/api/v1/sensors/${sensorID}`,
+                withCredentials: false,
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem('access_token')}`
+                }
+            })
+            .then(Response => {
+                closeModal();
+            })
     }
 
     const doSensor = () => {
@@ -73,7 +83,7 @@ const AddSensor = ({show, closeModal, Titel, sensors, sensorID}) => {
     return (
         <div className={'modal-container'} style={{visibility: show ? 'visible' : 'hidden'}}>
             <div style={
-                {position: "absolute", right: "20px", top: "10px", fontSize: "xx-large", color: "red",
+                {position: "absolute", right: "20px", top: "10px", fontSize: "xx-large", color: "red", cursor: "pointer",
                 visibility: Titel === "Редактировать" && show ? 'visible' : 'hidden'}}
                  onClick={() => deleteSensor()}
             >
@@ -83,12 +93,12 @@ const AddSensor = ({show, closeModal, Titel, sensors, sensorID}) => {
             <input id="name" type="text" placeholder='Название сенсора'/>
             <input id="description" type="text" placeholder='Описание сенсора'/>
             <input id="snmp" type="text" placeholder='SNMP'/>
-            <button onClick={() => {doSensor(); }} style={{marginRight: 10}} type="button">
+            <button onClick={() => {doSensor(); closeModal();}} style={{marginRight: 10}} type="button">
                 {Titel}
             </button>
             <button onClick={closeModal} type="button">Закрыть</button>
         </div>
     )
-}
+};
 
 export default AddSensor;

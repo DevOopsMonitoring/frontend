@@ -1,33 +1,32 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import axios from 'axios';
-import AddSensor from '../../Components/Modals/AddSensor'
-import './Sensors.css'
+import AddCompany from '../../Components/Modals/AddCompany'
+import './Companies.css'
 
 
-export default function Sensors(){
-    const [sensors, setSensors] = React.useState([]);
+export default function Companies(){
+    const [companies, setCompanies] = React.useState([]);
     const [loaded, setLoaded] = React.useState(false)
-    const [sensorId, setSensorId] = React.useState(null)
+    const [company, setCompany] = React.useState(null)
     const [showModal, setShowModal] = React.useState(false)
     const [titleModal, setTitleModal] = React.useState(null)
 
     React.useEffect(() => {
         setTitleModal('Добавить')
-        getSensors()
+        getCompanies()
     }, [])
 
-    const getSensors = () => {
+    const getCompanies = () => {
         axios({
             method: 'get',
-            url: `/api/v1/sensors`,
+            url: `/api/v1/companies`,
             withCredentials: false,
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('access_token')}`
             }
         })
             .then(response => {
-                setSensors(response.data.results)
+                setCompanies(response.data.results)
                 setLoaded(true)
             })
             .catch(err => {
@@ -39,12 +38,12 @@ export default function Sensors(){
         <div className='servers-container'>
             {
                 loaded ?
-                sensors.map(item => {
+                companies.map(item => {
                     return (
                         <div className='list-element' key={item.id}>
                             <p className='elem-name'>{item.name}</p>
                             <a className='data-link' onClick={() => {
-                                setSensorId(item.id)
+                                setCompany(item)
                                 setTitleModal('Редактировать')
                                 setShowModal(true)
                             }}>
@@ -65,16 +64,15 @@ export default function Sensors(){
                     <p className='add-name'>+</p>
                 </div>
             </a>
-            <AddSensor
+            <AddCompany
                 show={showModal}
                 closeModal={() => {
                     setShowModal(false)
                     setTitleModal('Добавить')
-                    getSensors()
+                    getCompanies()
                 }}
-                Titel={titleModal}
-                sensors={sensors}
-                sensorID={sensorId}
+                title={titleModal}
+                company={company}
             />
         </div>
     )

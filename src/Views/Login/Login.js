@@ -22,7 +22,8 @@ export default function Login(){
           })
           .then(response => {
             var decoded = jwt_decode(response.data.access_token)
-            localStorage.setItem('user_id', decoded.sub)
+            localStorage.setItem('user_id', decoded.sub);
+            localStorage.setItem('login', login)
             localStorage.setItem('access_token', response.data.access_token);
             localStorage.setItem('refresh_token', response.data.refresh_token);
             history.push('/')

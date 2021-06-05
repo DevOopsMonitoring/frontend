@@ -11,6 +11,8 @@ import Login from './Views/Login/Login'
 import UserServers from './Views/UserServers/UserServers'
 import Sensors from "./Views/Sensors/Sensors";
 import UserRules from "./Views/UserRules/UserRules";
+import Companies from "./Views/Companies/Companies";
+import Report from "./Views/Report/Report";
 import './App.css';
 
 function App() {
@@ -33,6 +35,12 @@ function App() {
         <Route path="/register">
           <Register />
         </Route>
+        <Router path="/companies">
+          <Companies />
+        </Router>
+        <Router path="/report">
+          <Report />
+        </Router>
         <Route path="/">
           <Home />
         </Route>

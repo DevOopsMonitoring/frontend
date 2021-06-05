@@ -24,7 +24,7 @@ import {
     Filler,
     Legend,
     Title,
-    Tooltip
+    Tooltip,
   } from 'chart.js';
 import './Charts.css';
 
@@ -54,6 +54,11 @@ Chart.register(
     Tooltip
   );
 
+Array.prototype.dobav = function(newElement, n) {
+    while(n--)
+        this.push(newElement);
+    return this;
+}
 
 
 export default function Charts({id}){
@@ -76,20 +81,31 @@ export default function Charts({id}){
         })
         .then(response => {
             setChartData(response.data.data)
+            if (response.data.data.length === 0)
+                document.getElementById("text_load").style.visibility = "hidden"
             response.data.data.map(item => {
                 var ctx = document.getElementById(item.name);
+                var tmp = [].dobav(item.critical_value, item.time.length)
                 new Chart(ctx, {
                     type: 'line',
                     data: {
                         labels: item.time,
-                        datasets: [{
-                            data: item.values,
-                            tension: 0.3,
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.8)',
-                            ],
-                            borderColor: 'rgba(255, 99, 132, 0.8)'
-                        }]
+                        datasets: [
+                            {
+                                data: item.values,
+                                tension: 0.4,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.8)',
+                                ],
+                                borderColor: 'rgba(53,191,255,0.34)',
+                                fill: '+1'
+                            },
+                            {
+                                data: tmp,
+                                borderColor: 'rgba(255, 99, 132)',
+                                pointRadius: 0,
+                            }
+                        ]
                     },
                     options: {
                         responsive: true,
