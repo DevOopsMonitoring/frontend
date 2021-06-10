@@ -31,7 +31,7 @@ const Header = () => {
                     </> :
                     <span style={{float: "right"}}>
                         <Link to="/login" style={{textDecoration: pathname === '/login' ? 'underline' : 'none', textUnderlineOffset: 10}}>Войти</Link> |
-                        <Link to="/register" style={{textDecoration: pathname === '/register' ? 'underline' : 'none', textUnderlineOffset: 10}}>Зарегистрироваться</Link>
+                        <Link to="/request" style={{textDecoration: pathname === '/register' ? 'underline' : 'none', textUnderlineOffset: 10}}>Оставить заявку</Link>
                     </span>
             }
             {

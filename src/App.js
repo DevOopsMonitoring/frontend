@@ -7,6 +7,7 @@ import {
 import Header from './Components/Header/Header'
 import Home from './Views/Home/Home'
 import Register from './Views/Register/Register'
+import Request from './Views/Request/Request'
 import Login from './Views/Login/Login'
 import UserServers from './Views/UserServers/UserServers'
 import Sensors from "./Views/Sensors/Sensors";
@@ -34,6 +35,9 @@ function App() {
         </Route>
         <Route path="/register">
           <Register />
+        </Route>
+        <Route path='/request'>
+          <Request />
         </Route>
         <Router path="/companies">
           <Companies />
